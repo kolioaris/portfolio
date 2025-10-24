@@ -8,6 +8,8 @@ import { ThemeProvider } from "./components/theme-provider";
 const Fira = Fira_Code({
   variable: "--font-fira-code",
   subsets: ["latin", "latin-ext"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
