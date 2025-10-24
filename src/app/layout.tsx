@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "./components/theme-provider";
 
 const Fira = Fira_Code({
@@ -26,6 +27,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Analytics/>
+          <SpeedInsights/>
           {children}
         </ThemeProvider>
       </body>
