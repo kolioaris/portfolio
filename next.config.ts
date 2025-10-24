@@ -1,10 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    legacyBrowsers: false,
-    modern: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
   },
+  
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons'],
+  },
+  
+  transpilePackages: [],
 };
 
 export default nextConfig;
