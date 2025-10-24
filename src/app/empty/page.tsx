@@ -120,17 +120,6 @@ export default function Home() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <h1 className="mt-10 scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
-        Hi! I am kolioaris!
-      </h1>
-      <h3 className="scroll-m-20 text-2xl text-center tracking-tight mt-1">
-        I like coding and gaming.
-      </h3>
-      <div className="text-center mt-5">
-        <Button variant="outline" className="border mr-2" size="lg">GitHub</Button>
-        <Button variant="outline" className="border" size="lg">Social Media</Button>
-      </div>
-      <p className="text-muted-foreground text-center text-xs mt-5">By the way, the k is lowercase.</p>
     </div>
   );
 }
