@@ -23,57 +23,52 @@ export const viewport: Viewport = {
   ],
 };
 
-async function resolveCssHref(): Promise<string> {
-  // 1) prefer a generated ESM file written at build time
-  try {
-    const genPath = path.join(process.cwd(), "src", "app", "generated-css.mjs");
-    if (fs.existsSync(genPath)) {
-      // dynamic import of a local file requires file:// prefix
-      const mod = await import("file://" + genPath);
-      if (typeof mod?.default === "string") return mod.default;
-    }
-  } catch {}
-
-  // 2) attempt to read .next static css (server-only)
+function resolveCssHref(): string {
   try {
     if (process.env.NODE_ENV === "production") {
       const cssDir = path.join(process.cwd(), ".next", "static", "css");
-      const files = fs.readdirSync(cssDir);
-      const cssFile = files.find((f) => f.endsWith(".css"));
-      if (cssFile) return "/_next/static/css/" + cssFile;
+      const files = fs.readdirSync(cssDir).filter((f) => f.endsWith(".css"));
+      if (files.length > 0) return "/_next/static/css/" + files[0];
     }
-  } catch {}
+  } catch {
+    // ignore
+  }
 
-  // 3) safe fallback for dev / unknown environments
+  // fallback for dev / unknown
   return "/_next/static/css/ac5b8db87f4bb842.css";
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cssHref = await resolveCssHref();
+  const cssHref = resolveCssHref();
 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeedInsights />
 
-        {/* Preload global CSS (auto-resolves production filename if available) */}
-        <link
-          rel="preload"
-          href={cssHref}
-          as="style"
-          onLoad={(e) => {
-            (e.currentTarget as HTMLLinkElement).rel = "stylesheet";
-          }}
-        />
+        {/* Inject preload+onload via a small client script to avoid passing event handlers in a Server Component */}
+        <Script id="css-preload" strategy="beforeInteractive">
+          {`(function(){
+            try{
+              var href=${JSON.stringify(cssHref)};
+              var l=document.createElement('link');
+              l.rel='preload';
+              l.as='style';
+              l.href=href;
+              l.onload=function(){ l.rel='stylesheet'; };
+              document.head.appendChild(l);
+            }catch(e){}
+          })();`}
+        </Script>
+
         <noscript>
           <link rel="stylesheet" href={cssHref} />
         </noscript>
 
-        {/* Tiny critical CSS for LCP */}
         <style
           dangerouslySetInnerHTML={{
             __html: `
