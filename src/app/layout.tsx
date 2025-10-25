@@ -30,11 +30,8 @@ function resolveCssHref(): string {
       const files = fs.readdirSync(cssDir).filter((f) => f.endsWith(".css"));
       if (files.length > 0) return "/_next/static/css/" + files[0];
     }
-  } catch {
-    // ignore
-  }
+  } catch {}
 
-  // fallback for dev / unknown
   return "/_next/static/css/ac5b8db87f4bb842.css";
 }
 
@@ -49,26 +46,22 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <SpeedInsights />
-
-        {/* Inject preload+onload via a small client script to avoid passing event handlers in a Server Component */}
-        <Script id="css-preload" strategy="beforeInteractive">
+        <Script id="css-load-nonblocking" strategy="beforeInteractive">
           {`(function(){
             try{
               var href=${JSON.stringify(cssHref)};
               var l=document.createElement('link');
-              l.rel='preload';
-              l.as='style';
+              l.rel='stylesheet';
               l.href=href;
-              l.onload=function(){ l.rel='stylesheet'; };
+              l.media='print';
+              l.onload=function(){ l.media='all'; };
               document.head.appendChild(l);
             }catch(e){}
           })();`}
         </Script>
-
         <noscript>
           <link rel="stylesheet" href={cssHref} />
         </noscript>
-
         <style
           dangerouslySetInnerHTML={{
             __html: `

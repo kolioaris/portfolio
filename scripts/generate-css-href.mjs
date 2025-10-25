@@ -18,7 +18,6 @@ try {
     process.exit(0);
   }
 
-  // prefer the first global css file (usually the site's global css)
   const cssFile = files[0];
   const cssHref = "/_next/static/css/" + cssFile;
 
