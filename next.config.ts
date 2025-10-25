@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     ],
   },
   transpilePackages: [],
-  productionBrowserSourceMaps: false,
+  productionBrowserSourceMaps: true, // enable temporarily to analyze bundles
   async headers() {
     return [
       {
