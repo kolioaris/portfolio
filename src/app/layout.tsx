@@ -14,7 +14,7 @@ const Fira = Fira_Code({
 
 export const metadata: Metadata = {
   title: "kolioaris.xyz",
-  description: "kolioaris.xyz",
+  description: "kolioaris's Website",
 };
 
 export default function RootLayout({
