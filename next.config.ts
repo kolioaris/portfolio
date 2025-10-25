@@ -4,7 +4,8 @@ const RemoveServiceWorkerPlugin = require('webpack-remove-serviceworker-plugin')
 
 const nextConfig: NextConfig = {
   webpack: (config) => {
-    plugins: [new RemoveServiceWorkerPlugin()];
+    config.plugins = config.plugins || [];
+    config.plugins.push(new RemoveServiceWorkerPlugin());
     return config;
   },
   compiler: {
