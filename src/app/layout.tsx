@@ -1,36 +1,52 @@
-import type { Metadata } from "next";
-import { Fira_Code } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
-import { ThemeProvider } from "./components/theme-provider";
 
-const Fira = Fira_Code({
-  variable: "--font-fira-code",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  preload: true,
-});
+import { ThemeProvider } from "./components/theme-provider";
 
 export const metadata: Metadata = {
   title: "kolioaris.xyz",
   description: "kolioaris's Website",
+  metadataBase: new URL("https://kolioaris.xyz"),
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${Fira.variable} antialiased font-mono`}>
+      <head>
+        <SpeedInsights />
+        {/* Preconnect to Cloudflare CDN */}
+        <link
+          rel="preconnect"
+          href="https://cdnjs.cloudflare.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+        {/* Preconnect to Vercel Analytics */}
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
+        <link rel="preconnect" href="https://vitals.vercel-insights.com" />
+      </head>
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Analytics/>
-          <SpeedInsights/>
           {children}
         </ThemeProvider>
       </body>

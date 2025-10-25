@@ -4,10 +4,6 @@ import * as React from "react";
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-
-{
-  /* Icons */
-}
 import { FaGithub, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 
@@ -31,9 +27,8 @@ export default function Home() {
   const { setTheme } = useTheme();
 
   return (
-    /* Main Div */
     <div>
-      {/* Nav Bar Div */}
+      {/* Nav Bar */}
       <div className="p-1.5 border-b">
         <NavigationMenu>
           <NavigationMenuList>
@@ -56,17 +51,19 @@ export default function Home() {
                   className="w-101 sm:w-101 md:w-101 lg:w-101 xl:w-101 2xl:w-101 transition-all duration-300"
                 >
                   <DropdownMenuItem onClick={() => setTheme("light")}>
-                    <Sun/> Light
+                    <Sun /> Light
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    <Moon/> Dark
+                    <Moon /> Dark
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setTheme("system")}>
-                    <Monitor/>System
+                    <Monitor />
+                    System
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </NavigationMenuItem>
+
             {/* Home */}
             <NavigationMenuItem>
               <Link
@@ -76,6 +73,7 @@ export default function Home() {
                 Home
               </Link>
             </NavigationMenuItem>
+
             {/* Documentation */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="border p-4.5">
@@ -85,6 +83,7 @@ export default function Home() {
                 <NavigationMenuLink>Coming Soon</NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
+
             {/* Social Media */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="border p-4.5">
@@ -92,24 +91,28 @@ export default function Home() {
               </NavigationMenuTrigger>
               <NavigationMenuContent className="w-101 sm:w-101 md:w-101 lg:w-101 xl:w-101 2xl:w-101 transition-all duration-300">
                 <NavigationMenuLink
+                  target="_blank"
                   href="https://x.com/kolioaris"
                   className="flex items-center gap-1"
                 >
                   <FaXTwitter /> Twitter
                 </NavigationMenuLink>
                 <NavigationMenuLink
+                  target="_blank"
                   href="https://github.com/kolioaris"
                   className="flex items-center gap-1"
                 >
                   <FaGithub /> GitHub
                 </NavigationMenuLink>
                 <NavigationMenuLink
+                  target="_blank"
                   href="https://youtube.com/@kolioaris"
                   className="flex items-center gap-1"
                 >
                   <FaYoutube /> YouTube
                 </NavigationMenuLink>
                 <NavigationMenuLink
+                  target="_blank"
                   href="mailto:me@kolioaris.xyz"
                   className="flex items-center gap-1"
                 >
@@ -120,6 +123,8 @@ export default function Home() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
+
+      {/* Main Content */}
       <main>
         <h1 className="mt-10 scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
           Hi! I am kolioaris!
@@ -127,11 +132,22 @@ export default function Home() {
         <h2 className="scroll-m-20 text-2xl text-center tracking-tight mt-1">
           I like coding and gaming.
         </h2>
+
         <div className="text-center mt-5">
-          <Button variant="outline" className="border mr-2" size="lg">GitHub</Button>
-          <Button variant="outline" className="border" size="lg">Social Media</Button>
+          <Button asChild variant="outline" className="border mr-2" size="lg">
+            <Link target="_blank" href="https://github.com/kolioaris">
+              GitHub
+            </Link>
+          </Button>
+
+          <Button asChild variant="outline" className="border" size="lg">
+            <Link href="mailto:me@kolioaris.xyz">Send me an email!</Link>
+          </Button>
         </div>
-        <p className="text-muted-foreground text-center text-xs mt-5">By the way, the k is lowercase.</p>
+
+        <p className="text-muted-foreground text-center text-xs mt-5">
+          By the way, the k is lowercase.
+        </p>
       </main>
     </div>
   );
