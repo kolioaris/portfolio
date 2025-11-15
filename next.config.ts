@@ -34,6 +34,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/cfg",
+        destination: "/config.cfg",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
