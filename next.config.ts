@@ -38,8 +38,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/cfg",
-        destination: "/config.cfg",
+        source: "/date-before-name",
+        destination: "/date-and-time-before-name.txt",
         permanent: false,
       },
     ];
