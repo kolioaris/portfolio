@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
         destination: "/date-and-time-before-name.txt",
         permanent: false,
       },
+      {
+        source: "/long-profile",
+        destination: "/long-profile.png",
+        permanent: false,
+      },
     ];
   },
 };
