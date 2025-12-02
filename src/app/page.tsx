@@ -84,10 +84,10 @@ export default function Home() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            {/* Social Media */}
+            {/* Socials */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="border p-4.5">
-                Social Media
+                Socials
               </NavigationMenuTrigger>
               <NavigationMenuContent className="w-101 sm:w-101 md:w-101 lg:w-101 xl:w-101 2xl:w-101 transition-all duration-300">
                 <NavigationMenuLink
@@ -144,10 +144,6 @@ export default function Home() {
             <Link href="mailto:me@kolioaris.xyz">Send me an email!</Link>
           </Button>
         </div>
-
-        <p className="text-muted-foreground text-center text-xs mt-5">
-          By the way, the k is lowercase.
-        </p>
       </main>
     </div>
   );
