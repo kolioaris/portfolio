@@ -34,21 +34,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  async redirects() {
-    return [
-      {
-        source: "/date-before-name",
-        destination: "/date-and-time-before-name.txt",
-        permanent: false,
-      },
-      {
-        source: "/long-profile",
-        destination: "/long-profile.png",
-        permanent: false,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
