@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@emnapi/core": "^1.6.0",
-    "@emnapi/runtime": "^1.6.0",
+    "@emnapi/runtime": "^1.7.1",
     "@emnapi/wasi-threads": "^1.1.0",
     "@napi-rs/wasm-runtime": "^0.2.12",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
