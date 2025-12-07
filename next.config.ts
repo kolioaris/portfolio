@@ -41,6 +41,11 @@ const nextConfig: NextConfig = {
         destination: 'https://tally.so/r/68LN6Y',
         permanent: false,
       },
+      {
+        source: '/steamgg/ban-appeal',
+        destination: 'https://tally.so/r/A7zLpN',
+        permanent: false,
+      },
     ]
   },
 };
