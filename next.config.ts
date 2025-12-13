@@ -46,6 +46,11 @@ const nextConfig: NextConfig = {
         destination: 'https://tally.so/r/A7zLpN',
         permanent: false,
       },
+      {
+        source: '/cs2-launch-options',
+        destination: '/cs2-launch-options.txt',
+        permanent: false,
+      },
     ]
   },
 };
