@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/cs2-launch-options',
-        destination: '/cs2-launch-options.txt',
+        destination: '/cs2_launch_options.txt',
         permanent: false,
       },
     ]
