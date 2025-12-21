@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { FaGithub, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import Snowfall from 'react-snowfall'
 
 import {
   NavigationMenu,
@@ -28,6 +29,10 @@ export default function Home() {
 
   return (
     <div>
+      <Snowfall
+        color="#fff"
+        snowflakeCount={200}
+      />
       {/* Nav Bar */}
       <div className="p-1.5 border-b">
         <NavigationMenu>
