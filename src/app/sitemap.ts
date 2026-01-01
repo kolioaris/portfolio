@@ -3,7 +3,7 @@ export default function sitemap() {
     {
       url: 'https://kolioaris.xyz',
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: 'weekly',
       priority: 1,
     },
   ]
