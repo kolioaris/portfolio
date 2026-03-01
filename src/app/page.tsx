@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Snowfall from "react-snowfall";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,8 +14,6 @@ import { Navbar } from "@/components/ui/navbar";
 export default function Home() {
   return (
     <div>
-      <Snowfall snowflakeCount={200} />
-
       <Navbar />
 
       <main>
